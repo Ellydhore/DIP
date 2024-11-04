@@ -1,0 +1,10 @@
+C:\Users\eg428\source\repos\DIP\bin\Debug\DIP.exe.config
+C:\Users\eg428\source\repos\DIP\bin\Debug\DIP.exe
+C:\Users\eg428\source\repos\DIP\bin\Debug\DIP.pdb
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.csproj.AssemblyReference.cache
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.Properties.Resources.resources
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.csproj.GenerateResource.cache
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.csproj.CoreCompileInputs.cache
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.exe
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.pdb
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.Form1.resources
