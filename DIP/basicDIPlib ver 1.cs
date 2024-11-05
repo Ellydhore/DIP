@@ -9,7 +9,6 @@ namespace HNUDIP
 {
     static class ImageProcess
     {
-
         public static Bitmap CopyImage(Bitmap source)
         {
             Bitmap processed = new Bitmap(source.Width, source.Height, source.PixelFormat);
@@ -195,29 +194,55 @@ namespace HNUDIP
             }
         }
 
-        public static void Subtract(ref Bitmap a, ref Bitmap b,ref Bitmap result, int value)
+        //public static void Subtract(ref Bitmap a, ref Bitmap b,ref Bitmap result, int value)
+        //{
+        //    result = new Bitmap(a.Width, a.Height);
+        //    byte agraydata = 0;
+        //    byte bgraydata = 0;
+        //    for (int x = 0; x < a.Width; x++)
+        //    {
+        //        for (int y = 0; y < a.Height; y++)
+        //        {
+        //            Color adata = a.GetPixel(x, y);
+        //            Color bdata = b.GetPixel(x, y);
+
+        //            agraydata = (byte)((adata.R + adata.G + adata.B) / 3);
+        //            bgraydata = (byte)((bdata.R + bdata.G + bdata.B) / 3);
+        //            if (Math.Abs(agraydata-bgraydata) > value)
+        //                result.SetPixel(x, y, Color.Red);
+        //            else
+        //                result.SetPixel(x, y,bdata);
+
+        //        }
+
+        //    }
+
+        //}
+
+        public static Bitmap Subtract(Bitmap source, Bitmap background, int greenThreshold)
         {
-            result = new Bitmap(a.Width, a.Height);
-            byte agraydata = 0;
-            byte bgraydata = 0;
-            for (int x = 0; x < a.Width; x++)
+            // Initialize a new bitmap for the processed image
+            Bitmap processed = new Bitmap(source.Width, source.Height);
+
+            for (int x = 0; x < source.Width; x++)
             {
-                for (int y = 0; y < a.Height; y++)
+                for (int y = 0; y < source.Height; y++)
                 {
-                    Color adata = a.GetPixel(x, y);
-                    Color bdata = b.GetPixel(x, y);
+                    Color pixel = source.GetPixel(x, y);
+                    Color backpixel = background.GetPixel(x, y);
 
-                    agraydata = (byte)((adata.R + adata.G + adata.B) / 3);
-                    bgraydata = (byte)((bdata.R + bdata.G + bdata.B) / 3);
-                    if (Math.Abs(agraydata-bgraydata) > value)
-                        result.SetPixel(x, y, Color.Red);
+                    if (pixel.G > greenThreshold && pixel.G > pixel.R * 1.5 && pixel.G > pixel.B * 1.5)
+                    {
+                        processed.SetPixel(x, y, backpixel);
+                    }
                     else
-                        result.SetPixel(x, y,bdata);
-
+                    {
+                        processed.SetPixel(x, y, pixel);
+                    }
                 }
-
             }
 
+            return processed;
         }
 
 

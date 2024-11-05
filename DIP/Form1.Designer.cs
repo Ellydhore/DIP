@@ -27,6 +27,7 @@
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pixelCopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.greyscaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -34,11 +35,10 @@
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sepiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subtractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vIDEODIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.camSwitchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turnOnCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turnOffCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vIDEODIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -92,6 +92,13 @@
             this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveFileToolStripMenuItem.Text = "Save File";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            // 
+            // loadBackgroundToolStripMenuItem
+            // 
+            this.loadBackgroundToolStripMenuItem.Name = "loadBackgroundToolStripMenuItem";
+            this.loadBackgroundToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
+            this.loadBackgroundToolStripMenuItem.Text = "Load Background";
+            this.loadBackgroundToolStripMenuItem.Click += new System.EventHandler(this.loadBackgroundToolStripMenuItem_Click);
             // 
             // dIPToolStripMenuItem
             // 
@@ -149,12 +156,11 @@
             this.subtractToolStripMenuItem.Text = "Subtract";
             this.subtractToolStripMenuItem.Click += new System.EventHandler(this.subtractToolStripMenuItem_Click);
             // 
-            // loadBackgroundToolStripMenuItem
+            // vIDEODIPToolStripMenuItem
             // 
-            this.loadBackgroundToolStripMenuItem.Name = "loadBackgroundToolStripMenuItem";
-            this.loadBackgroundToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
-            this.loadBackgroundToolStripMenuItem.Text = "Load Background";
-            this.loadBackgroundToolStripMenuItem.Click += new System.EventHandler(this.loadBackgroundToolStripMenuItem_Click);
+            this.vIDEODIPToolStripMenuItem.Name = "vIDEODIPToolStripMenuItem";
+            this.vIDEODIPToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.vIDEODIPToolStripMenuItem.Text = "VIDEO DIP";
             // 
             // camSwitchToolStripMenuItem
             // 
@@ -169,20 +175,16 @@
             // turnOnCameraToolStripMenuItem
             // 
             this.turnOnCameraToolStripMenuItem.Name = "turnOnCameraToolStripMenuItem";
-            this.turnOnCameraToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.turnOnCameraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.turnOnCameraToolStripMenuItem.Text = "Turn on camera";
+            this.turnOnCameraToolStripMenuItem.Click += new System.EventHandler(this.turnOnCameraToolStripMenuItem_Click);
             // 
             // turnOffCameraToolStripMenuItem
             // 
             this.turnOffCameraToolStripMenuItem.Name = "turnOffCameraToolStripMenuItem";
-            this.turnOffCameraToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.turnOffCameraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.turnOffCameraToolStripMenuItem.Text = "Turn off camera";
-            // 
-            // vIDEODIPToolStripMenuItem
-            // 
-            this.vIDEODIPToolStripMenuItem.Name = "vIDEODIPToolStripMenuItem";
-            this.vIDEODIPToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.vIDEODIPToolStripMenuItem.Text = "VIDEO DIP";
+            this.turnOffCameraToolStripMenuItem.Click += new System.EventHandler(this.turnOffCameraToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -260,6 +262,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(537, 150);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(250, 250);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
             // 
@@ -283,6 +286,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

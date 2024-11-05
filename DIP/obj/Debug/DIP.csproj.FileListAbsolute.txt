@@ -8,3 +8,10 @@ C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.csproj.CoreCompileInputs.cache
 C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.exe
 C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.pdb
 C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.Form1.resources
+C:\Users\eg428\source\repos\DIP\bin\Debug\AForge.dll
+C:\Users\eg428\source\repos\DIP\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\eg428\source\repos\DIP\bin\Debug\AForge.Video.dll
+C:\Users\eg428\source\repos\DIP\bin\Debug\AForge.xml
+C:\Users\eg428\source\repos\DIP\bin\Debug\AForge.Video.xml
+C:\Users\eg428\source\repos\DIP\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\eg428\source\repos\DIP\obj\Debug\DIP.csproj.Up2Date

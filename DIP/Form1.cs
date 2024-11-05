@@ -11,12 +11,17 @@ using System.Windows.Forms;
 
 // Additional Libs
 using HNUDIP;
+using AForge;
+using AForge.Video;
+using AForge.Video.DirectShow;
 
 namespace DIP
 {
     public partial class Form1 : Form
     {
         Bitmap loaded, loaded_bg, processed_part1, processed_part2;
+        private FilterInfoCollection videoDevices; // List of all available video devices
+        private VideoCaptureDevice videoSource; // The selected video device (camera)
         int part = 1;
         public Form1()
         {
@@ -66,8 +71,11 @@ namespace DIP
 
         private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
         {
-            loaded_bg = new Bitmap(openFileDialog2.FileName);
-            pictureBox2.Image = loaded_bg;
+            if(part == 2)
+            {
+                loaded_bg = new Bitmap(openFileDialog2.FileName);
+                pictureBox2.Image = loaded_bg;
+            }
         }
 
         // >> SAVE FILE LOGIC >>
@@ -177,32 +185,16 @@ namespace DIP
 
         private void subtractToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(part == 2)
+            if (part == 2)
             {
-                Color green = Color.FromArgb(0, 0, 255);
-                int greygreen = (green.R + green.G + green.B) / 3;
-                int threshhold = 5;
+                int greenThreshold = 100; 
+                processed_part2 = ImageProcess.Subtract(loaded, loaded_bg, greenThreshold);
 
-                for(int x = 0; x < loaded.Width; x++)
-                {
-                    for(int y = 0; y < loaded.Height; y++)
-                    {
-                        Color pixel = loaded.GetPixel(x, y);
-                        Color backpixel = loaded_bg.GetPixel(x, y);
-                        int grey = (pixel.R + pixel.G + backpixel.B) / 3;
-                        int subtractvalue = Math.Abs(grey - greygreen);
-                        if(subtractvalue >  threshhold)
-                        {
-                            processed_part2.SetPixel(x, y, backpixel);
-                        } else
-                        {
-                            processed_part2.SetPixel(x, y, pixel);
-                        }
-                    }
-                    pictureBox2.Image = processed_part2;
-                }
+                pictureBox3.Image = processed_part2;
             }
         }
+
+
 
         private void greyscaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -215,6 +207,52 @@ namespace DIP
             {
                 MessageBox.Show("Please load an image first.");
             }
+        }
+
+        private void turnOnCameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice); // Get all video devices
+
+            if (videoDevices.Count == 0)
+            {
+                MessageBox.Show("No camera found.");
+                return;
+            }
+
+            videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString); // Use the first available camera
+            videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame); // Attach the NewFrame event
+            videoSource.Start(); // Start the camera
+        }
+
+        private void turnOffCameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.SignalToStop(); // Signal the camera to stop
+                videoSource.WaitForStop(); // Wait for it to stop completely
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void videoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone(); // Clone the frame into a bitmap
+            pictureBox1.Image = bitmap; // Display the frame in the PictureBox
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+            }
+
+            base.OnFormClosing(e);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
         }
 
         // >> SWITCH PARTS
