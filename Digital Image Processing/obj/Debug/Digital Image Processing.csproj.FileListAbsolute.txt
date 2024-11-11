@@ -1,0 +1,17 @@
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\Digital Image Processing.exe.config
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\Digital Image Processing.exe
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\Digital Image Processing.pdb
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\Digital Image Processing.csproj.AssemblyReference.cache
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\Digital_Image_Processing.Properties.Resources.resources
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\Digital Image Processing.csproj.GenerateResource.cache
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\Digital Image Processing.csproj.CoreCompileInputs.cache
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\Digital Image Processing.exe
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\Digital Image Processing.pdb
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\AForge.dll
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\AForge.Video.dll
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\AForge.xml
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\AForge.Video.xml
+C:\Users\eg428\source\repos\Digital Image Processing\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\Digital .D98E00A8.Up2Date
+C:\Users\eg428\source\repos\Digital Image Processing\obj\Debug\DIPForm.DIPForm.resources
