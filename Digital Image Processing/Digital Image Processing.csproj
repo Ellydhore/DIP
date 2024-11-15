@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CITLIBFilters.cs" />
     <Compile Include="DIPForm.cs">
       <SubType>Form</SubType>
     </Compile>

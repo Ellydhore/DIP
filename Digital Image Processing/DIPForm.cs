@@ -37,7 +37,17 @@ namespace DIPForm
             Grayscale,
             Invert,
             Sepia,
-            Subtract
+            Subtract,
+            Smooth,
+            GaussianBlur,
+            Sharpen,
+            MeanRemoval,
+            EmbossLaplacian,
+            EmbossHV,
+            EmbossAD,
+            EmbossLossy,
+            EmbossV,
+            EmbossH
         }
 
         public DIPForm()
@@ -100,14 +110,10 @@ namespace DIPForm
             pictureBoxHandler.disposeImages(pictureBox1, inputImage);
             pictureBoxHandler.disposeImages(pictureBox2, outputImage);
             pictureBoxHandler.disposeImages(pictureBox3, histogram);
-            if (captureDevice != null && captureDevice.IsRunning)
-            {
-                captureDevice.SignalToStop();
-                captureDevice.WaitForStop();
-            }
+            captureDevice.SignalToStop();
+            captureDevice.WaitForStop();
             isCameroOn = false;
             videoCamHandler.toggleCam(isCameroOn, button1, button2);
-
         }
         //
         //
@@ -203,6 +209,36 @@ namespace DIPForm
                     case FilterType.Subtract:
                         outputImage = imageFilters.subtract(inputImage, backgroundImage);
                         break;
+                    case FilterType.Smooth:
+                        outputImage = imageFilters.Smooth(inputImage, 1);
+                        break;
+                    case FilterType.GaussianBlur:
+                        outputImage = imageFilters.GaussianBlur(inputImage, 4);
+                        break;
+                    case FilterType.Sharpen:
+                        outputImage = imageFilters.Sharpen(inputImage, 11);
+                        break;
+                    case FilterType.MeanRemoval:
+                        outputImage = imageFilters.MeanRemoval(inputImage, 9);
+                        break;
+                    case FilterType.EmbossLaplacian:
+                        outputImage = imageFilters.EmbossLaplacian(inputImage, 4, 127);
+                        break;
+                    case FilterType.EmbossHV:
+                        outputImage = imageFilters.EmbossHV(inputImage, 4, 127);
+                        break;
+                    case FilterType.EmbossAD:
+                        outputImage = imageFilters.EmbossAD(inputImage, 8, 127);
+                        break;
+                    case FilterType.EmbossLossy:
+                        outputImage = imageFilters.EmbossLossy(inputImage, 4, 127);
+                        break;
+                    case FilterType.EmbossH:
+                        outputImage = imageFilters.EmbossHorizontal(inputImage, 2, 127);
+                        break;
+                    case FilterType.EmbossV:
+                        outputImage = imageFilters.EmbossVertical(inputImage, 0, 127);
+                        break;
                 }
                 pictureBox2.Image = outputImage;
                 histogram = imageFilters.histogram(outputImage);
@@ -246,6 +282,66 @@ namespace DIPForm
             {
                 ApplyFilter(FilterType.Subtract);
             }
+        }
+        //
+        //
+        // FILTER: SMOOTHING
+        private void smoothingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.Smooth);
+        }
+        //
+        //
+        // FILTER: GAUSSIAN BLUR
+        private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.GaussianBlur);
+        }
+        //
+        //
+        // FILTER: SHARPEN
+        private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.Sharpen);
+        }
+        //
+        //
+        // MEAN REMOVAL
+        private void meanRemovalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.MeanRemoval);
+        }
+        //
+        //
+        // EMBOSS LAPLACIAN
+        private void embossingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.EmbossLaplacian);
+        }
+        // HORIZONTAL / VERTICAL
+        private void horizontalVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.EmbossHV);
+        }
+        // ALL DIRECTIONS
+        private void allDirectionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.EmbossAD);
+        }
+        // LOSSY
+        private void lossyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.EmbossLossy);
+        }
+        // HORIZONTAL ONLY
+        private void horizontalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.EmbossH);
+        }
+        // VERTICAL ONLY
+        private void verticalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyFilter(FilterType.EmbossV);
         }
     }
 }
